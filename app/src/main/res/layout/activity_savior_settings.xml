@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.savior.syedsameerulhasan.savior_tracker.SaviorSettings">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Saviors"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/contact1"
+        android:background="#e1e1e1"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="80dp" />
+
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/contact2"
+        android:background="#e1e1e1"
+        android:layout_below="@+id/contact1"
+        android:layout_alignLeft="@+id/contact1"
+        android:layout_alignStart="@+id/contact1"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/contact3"
+        android:background="#e1e1e1"
+        android:layout_below="@+id/contact2"
+        android:layout_alignLeft="@+id/contact2"
+        android:layout_alignStart="@+id/contact2"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/contact2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/number"
+        android:text="1"
+        android:gravity="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/textView2"
+        android:background="@drawable/number"
+        android:text="2"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/contact2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/textView3"
+        android:background="@drawable/number"
+        android:text="3"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/contact3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/printcontacts"
+        android:text="Contacts"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/savecontactsbutton"
+        android:layout_above="@+id/deletecontactsbutton"
+        android:layout_alignLeft="@+id/deletecontactsbutton"
+        android:layout_alignStart="@+id/deletecontactsbutton"
+        android:background="@drawable/plusbutton"
+        android:layout_marginBottom="10dp"
+        android:layout_alignRight="@+id/deletecontactsbutton"
+        android:layout_alignEnd="@+id/deletecontactsbutton"
+        android:text="Save Numbers"
+        android:onClick="addButtonClicked" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deletecontactsbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/plusbutton"
+        android:text="Clear Contacts"
+        android:onClick="deleteButtonClicked" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Interval (mins)"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp"
+        android:layout_toStartOf="@+id/deletecontactsbutton"
+        android:layout_alignEnd="@+id/deletecontactsbutton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/intervaltext"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/contact3"
+        android:layout_toEndOf="@+id/contact3" />
+
+
+</RelativeLayout>
