@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +40,8 @@ import java.util.TimerTask;
 public class SMS extends Activity{
 
     Button btnSendSMS;
-    Button saviorbutton;
-    Button trackerbutton;
+    ImageButton saviorbutton;
+    ImageButton trackerbutton;
     EditText txtPhoneNo;
     EditText txtMessage;
     private ToggleButton toggleStartStopButton;
@@ -69,7 +70,7 @@ public class SMS extends Activity{
 
 
 
-        saviorbutton = (Button) findViewById(R.id.saviorbutton);
+/*        saviorbutton = (Button) findViewById(R.id.saviorbutton);
 
         saviorbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +88,7 @@ public class SMS extends Activity{
                 Intent myIntent2 = new Intent(getApplicationContext(), Tracker.class);
                 startActivity(myIntent2);
             }
-        });
+        });*/
 
         ToggleButton toggleStartStopButton = (ToggleButton) findViewById(R.id.toggleStartStopButton);
         toggleStartStopButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -97,6 +98,26 @@ public class SMS extends Activity{
                 } else {
                     locManager.removeUpdates(locListener);
                 }
+            }
+        });
+
+        ImageButton right = (ImageButton)findViewById(R.id.trackerbutton);
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SMS.this, Tracker.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        ImageButton left = (ImageButton)findViewById(R.id.saviorbutton);
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SMS.this, SaviorSettings.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_righ);
             }
         });
 

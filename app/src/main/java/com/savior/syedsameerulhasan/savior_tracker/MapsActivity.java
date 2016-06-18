@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private  ArrayList<LatLng> checkingpoints = new ArrayList<LatLng>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addPolyline(new PolylineOptions().geodesic(true)
                 .addAll(ppoints).color(Color.BLUE)
         );
+        setppoints(ppoints);
     }
 
     private void addIcon(IconGenerator iconFactory, CharSequence text, LatLng position) {
@@ -116,6 +118,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         getMap().addMarker(markerOptions);
     }
+
+    public void setppoints(ArrayList<LatLng> ppoints) {
+        this.checkingpoints = ppoints;
+    }
+
+    public ArrayList<LatLng> getppoints() {
+        return this.checkingpoints;
+    }
+
+
 
     public GoogleMap getMap() {
         return mMap;

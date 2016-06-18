@@ -16,6 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class Tracker extends AppCompatActivity {
 
     TextView printpoints;
@@ -26,13 +31,18 @@ public class Tracker extends AppCompatActivity {
     public String SecondNumber;
     public String ThirdNumber;
 
+    MapsActivity MA = new MapsActivity();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
 
+        MA.getppoints().size();
+
+
         Button First = (Button) findViewById(R.id.First);
-        Button Second = (Button) findViewById(R.id.Second);
+        final Button Second = (Button) findViewById(R.id.Second);
         Button Third = (Button) findViewById(R.id.Third);
 
         DBHandlerContacts dbHandler = new DBHandlerContacts(this);
@@ -40,6 +50,8 @@ public class Tracker extends AppCompatActivity {
         FirstNumber = dbHandler.GetFirstPhoneNumber(0);
         SecondNumber = dbHandler.GetFirstPhoneNumber(1);
         ThirdNumber = dbHandler.GetFirstPhoneNumber(2);
+
+
         First.setText(FirstNumber);
         Second.setText(SecondNumber);
         Third.setText(ThirdNumber);
@@ -54,40 +66,76 @@ public class Tracker extends AppCompatActivity {
 
             if (InputString.equals(FirstNumber)){
 
-                First.setBackgroundColor(Color.GREEN);
+                First.setBackgroundResource(R.drawable.plusbuttongreen);
             }
             if (InputString.equals(SecondNumber)){
-                Second.setBackgroundColor(Color.GREEN);
+                Second.setBackgroundResource(R.drawable.plusbuttongreen);
             }
             if (InputString.equals(ThirdNumber)){
-                Third.setBackgroundColor(Color.GREEN);
+                Third.setBackgroundResource(R.drawable.plusbuttongreen);
             }
         }
+
 
         First.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PlotButton(v.findViewById(R.id.First), FirstNumber);
-                preferences.edit().remove("string_id").commit();
+                if (FirstNumber.toString().length()>2){
+                    if (MA.getppoints().size()<=1)
+                    {
+                        Toast.makeText(Tracker.this,"Not enough points",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        PlotButton(v.findViewById(R.id.First), FirstNumber);
+                        preferences.edit().remove("string_id").commit();
+
+                    }
+                }
+                else{
+                    Toast.makeText(Tracker.this,"1st Savior Number not entered",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         Second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PlotButton(v.findViewById(R.id.Second),SecondNumber);
-                preferences.edit().remove("string_id").commit();
+                if (SecondNumber.toString().length()>2){
+                    if (MA.getppoints().size()<=1) {
+                        Toast.makeText(Tracker.this,"Not enough points",Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        PlotButton(v.findViewById(R.id.Second),SecondNumber);
+                        preferences.edit().remove("string_id").commit();
+
+                    }
+                }
+                else{
+                    Toast.makeText(Tracker.this, "2nd Savior Number not entered", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         Third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PlotButton(v.findViewById(R.id.Third),ThirdNumber);
-                preferences.edit().remove("string_id").commit();
+                if (ThirdNumber.toString().length()>2){
+                    if (MA.getppoints().size()<=1) {
+                        Toast.makeText(Tracker.this,"Not enough points",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        PlotButton(v.findViewById(R.id.Third),ThirdNumber);
+                        preferences.edit().remove("string_id").commit();
+
+                    }
+                }
+                else{
+                    Toast.makeText(Tracker.this,"3rd Savior Number not entered",Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
     }
 
     public void PlotButton(View view, String PhoneNumber){
